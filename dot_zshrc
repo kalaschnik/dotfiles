@@ -1,4 +1,4 @@
-printf '\33c\e[3J' ## hides last login time from Terminal
+printf '\33c\e[3J' ## hides last login time from Terminal!
 
 ###############################################################################
 # ZSH Plugins
