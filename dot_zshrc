@@ -1,0 +1,74 @@
+printf '\33c\e[3J' ## hides last login time from Terminal
+
+###############################################################################
+# ZSH Plugins
+###############################################################################
+# enable autosuggestions (requires https://formulae.brew.sh/formula/zsh-autosuggestions)
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# enable zsh completen (requires https://formulae.brew.sh/formula/zsh-completions)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+  zstyle ':completion:*' menu select
+fi
+
+export PATH="$N_PREFIX/bin:$PATH:"
+
+###############################################################################
+# Aliases
+###############################################################################
+# Use exa for ls
+alias exa='exa -aa --header --long --classify --git --group-directories-first --icons --accessed --modified --created --group'
+# forward ls to exa
+alias ls=exa
+alias ll=exa
+# use old ls with lsa
+alias lsa='command ls -lAFh'
+alias R='R --no-save --no-restore-data'
+alias bbd='brew bundle dump --file=~/Nextcloud/projects/dotfiles/Brewfile --force --describe'
+alias rm=trash # using node’s global trash-cli
+alias trail='bat<<<${(F)path}'
+alias p='cd ~/Nextcloud/projects/'
+alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
+
+###############################################################################
+# Functions
+###############################################################################
+# matching with oh-my-zsh’s take: https://github.com/ohmyzsh/ohmyzsh/blob/9e967b4eccbe26701315860a3b0bad01fde725c8/lib/functions.zsh#L39
+function mkcd() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
+###############################################################################
+# Utilities
+###############################################################################
+
+# Syntax highlighting for man pages using bat
+# https://github.com/sharkdp/bat#man
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# This is also used by R and radian to set response language
+export LANG=en_US.UTF-8
+
+export EDITOR="code -w"
+
+# hide usernmae and hostname
+export PS1="%~ $ "
+
+# Allow interactive comments (#)
+setopt interactive_comments
+
+
+###############################################################################
+# Last Load
+###############################################################################
+# Syntax Highlighting (https://formulae.brew.sh/formula/zsh-syntax-highlighting)
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History substring search (https://formulae.brew.sh/formula/zsh-history-substring-search)
+# this needs to come after syntax highlighting: https://github.com/zsh-users/zsh-history-substring-search#usage
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
