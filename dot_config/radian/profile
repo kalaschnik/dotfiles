@@ -1,0 +1,16 @@
+# this option is experimental and is known to break python prompt, use it with caution
+options(radian.auto_suggest = TRUE)
+
+# highlight matching bracket
+options(radian.highlight_matching_bracket = TRUE)
+
+# the minimum length of prefix to trigger auto completions
+options(radian.completion_prefix_length = 1)
+
+# allows user defined shortcuts, these keys should be escaped when send through the terminal.
+# In the following example, `esc` + `-` sends `<-` and `esc` + `m` sends `%>%`.
+# Note that in some terminals, you could mark `alt` as `escape` so you could use `alt` + `-` instead.
+options(radian.escape_key_map = list(
+    list(key = "-", value = " <- "),
+    list(key = "m", value = " %>% ")
+))

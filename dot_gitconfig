@@ -1,0 +1,23 @@
+[user]
+	name = Steven Kalinke
+	email = 9831678+Kalaschnik@users.noreply.github.com
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[diff]
+    tool = vscode
+[difftool "vscode"]
+		cmd = code --new-window --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool]
+    cmd = code --wait $MERGED
+[core]
+	editor = nano
+	pager = less -+FX

@@ -1,0 +1,8 @@
+{
+    "goToFileFunction": "Cmd+P",
+    "addCursorAbove": "Alt+Cmd+Up",
+    "addCursorBelow": "Alt+Cmd+Down",
+    "commentUncomment": "Shift+Cmd+7",
+    "renameInScope": "F2",
+    "quickAddNext": "Cmd+D"
+}
