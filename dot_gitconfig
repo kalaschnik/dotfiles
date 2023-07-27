@@ -1,6 +1,8 @@
 [user]
 	name = Steven Kalinke
 	email = 9831678+Kalaschnik@users.noreply.github.com
+[push]
+	autoSetupRemote = true
 [pull]
 	rebase = true
 [init]
