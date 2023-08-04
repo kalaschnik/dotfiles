@@ -15,3 +15,9 @@ run_once:
 - `compaudit | xargs chmod g-w` to fix zsh compinit: insecure directories, run compaudit for list.
   There are insecure directories:
   /usr/local/share
+
+- Execute this to make git full case senstive:
+
+```
+git config --unset-all core.ignorecase && git config --system core.ignorecase false
+```
