@@ -57,6 +57,10 @@ export EDITOR="code -w"
 # hide usernmae and hostname
 export PS1="%~ $ "
 
+# Expose REMOVE_BG_API_KEY using 1password cli - prepend removebg witih op run --
+# instead of removebg example.jpg use op run -- removebg example.jpg
+export REMOVE_BG_API_KEY="op://Personal/Kaleido/API-removebg"
+
 # Allow interactive comments (#)
 setopt interactive_comments
 
