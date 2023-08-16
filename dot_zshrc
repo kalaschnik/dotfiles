@@ -37,7 +37,7 @@ alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
 # Functions
 ###############################################################################
 # matching with oh-my-zsh’s take: https://github.com/ohmyzsh/ohmyzsh/blob/9e967b4eccbe26701315860a3b0bad01fde725c8/lib/functions.zsh#L39
-function mkcd() {
+function take() {
   mkdir -p $@ && cd ${@:$#}
 }
 
