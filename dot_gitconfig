@@ -24,3 +24,5 @@
 	editor = nano
 	pager = less -+FX
 	ignoreCase = false
+[alias]
+	st = status
