@@ -21,3 +21,14 @@ run_once:
 ```
 git config --unset-all core.ignorecase && git config --system core.ignorecase false
 ```
+
+## `jira-cli`
+
+1. Add new password to keychain (see [here](https://github.com/ankitpokhrel/jira-cli/discussions/356)) and use your Personal Access Token as password
+2. If this feature is still not resolved (https://github.com/ankitpokhrel/jira-cli/issues/651), run this once to get shell completion for `jira-cli`:
+
+```
+jira completion zsh > /usr/local/share/zsh/site-functions/_jira
+```
+
+3. run `jira init`
