@@ -78,3 +78,14 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
+# Set zsh option for prompt substitution
+setopt PROMPT_SUBST
+## steven current-folder [current-branch] $ 
+# export PROMPT='%F{grey}%n%f %F{cyan}%.%f %F{green}$(parse_git_branch)%f %F{normal}$%f'
+## current-folder [current-branch] $
+export PROMPT='%F{cyan}%.%f %F{green}$(parse_git_branch)%f %F{normal}$%f '
