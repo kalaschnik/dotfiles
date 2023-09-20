@@ -30,3 +30,4 @@
 	last = log -1 HEAD --stat
 	lastn = log HEAD --stat
 	d = diff --color-words
+	update = !echo "↓ Fetching origin/main into local/main..." && git fetch origin main:main && echo "✓ Done." && echo "⛙ Rebasing main into current branch w/ autostashing..." && git rebase main --autostash && echo "✓ All done."
