@@ -85,7 +85,5 @@ parse_git_branch() {
 }
 # Set zsh option for prompt substitution
 setopt PROMPT_SUBST
-## steven current-folder [current-branch] $ 
-# export PROMPT='%F{grey}%n%f %F{cyan}%.%f %F{green}$(parse_git_branch)%f %F{normal}$%f'
-## current-folder [current-branch] $
-export PROMPT='%F{cyan}%.%f %F{green}$(parse_git_branch)%f %F{normal}$%f '
+## current-folder[current-branch] $
+export PROMPT='%F{cyan}%.%f%F{green}$(parse_git_branch)%f %F{normal}$%f '
