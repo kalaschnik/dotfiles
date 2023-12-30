@@ -41,6 +41,9 @@ function take() {
   mkdir -p $@ && cd ${@:$#}
 }
 
+# add gi to query toptal gitignore api
+function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
+
 ###############################################################################
 # Utilities
 ###############################################################################
@@ -87,3 +90,4 @@ parse_git_branch() {
 setopt PROMPT_SUBST
 ## current-folder[current-branch] $
 export PROMPT='%F{cyan}%.%f%F{green}$(parse_git_branch)%f %F{normal}$%f '
+
