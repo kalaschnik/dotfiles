@@ -31,7 +31,8 @@ alias bbd='brew bundle dump --file=~/Nextcloud/projects/dotfiles/Brewfile --forc
 alias rm=trash # using node’s global trash-cli
 alias trail='bat<<<${(F)path}'
 alias p='cd ~/Nextcloud/projects/'
-alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
+alias ghcs='gh copilot suggest'
+alias ghce='gh copilot explain'
 
 ###############################################################################
 # Functions
