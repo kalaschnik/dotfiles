@@ -31,4 +31,7 @@
 	lastn = log HEAD --stat
 	d = diff --color-words
 	undo = reset --soft HEAD^
+	s = switch
+	sc = switch -c
 	update = !echo "↓ Fetching origin/main into local/main..." && git fetch origin main:main && echo "✓ Done." && echo "⛙ Rebasing main into current branch w/ autostashing..." && git rebase main --autostash && echo "✓ All done."
+	recent = "!r() { count=$1; git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always --count=${count:=10} | column -ts'|';}; r"
