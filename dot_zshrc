@@ -34,6 +34,7 @@ alias p='cd ~/Nextcloud/projects/'
 alias bun-vite="take ~/Downloads/bun-vite-$(date -u '+%Y-%m-%d-%H-%M') && bun create vite . --template react-swc-ts && echo -e 'Run\nbun run dev\nin VS Code’s terminal' > delete-me.txt && bun install && code . delete-me.txt"
 alias ghcs='gh copilot suggest'
 alias ghce='gh copilot explain'
+alias python=/usr/local/bin/python3 # python (version 2) is not needed anymore alias python to homebrew's python3
 
 ###############################################################################
 # Functions
