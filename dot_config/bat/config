@@ -4,7 +4,7 @@
 
 # Specify desired highlighting theme (e.g. "TwoDark"). Run `bat --list-themes`
 # for a list of all available themes
---theme="Visual Studio Dark+"
+#--theme="Visual Studio Dark+"
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
@@ -26,3 +26,4 @@
 --map-syntax "zshrc:Bourne Again Shell (bash)"
 --map-syntax "zshenv:Bourne Again Shell (bash)"
 --map-syntax "zprofile:Bourne Again Shell (bash)"
+
