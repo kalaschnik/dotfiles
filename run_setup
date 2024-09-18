@@ -46,12 +46,20 @@ function exists() {
 echo "\n${CLRHEAD}=== Checking Apple Developer Tools${CLRNC}"
 echo They are need to run some CLI apps, you cannot really bypass this step
 
+### DEVELOPER TOOLS
 [ -d "/Library/Developer/CommandLineTools/" ] && echo "${CLRSUCCESS}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}"
 
+### HOMEBREW
+echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
+exists brew && echo "${CLRSUCCESS}Homebrew aleady installed" || (echo "${CLRINFO}Homebrew is not installed" && echo "Installing Homebrew${CLRNC}" && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
 
+### BREWFILE
+echo "\n${CLRHEAD}=== Installing Software from Brewfile${CLRNC}"
 echo "\n${CLRHEAD}=== Checking Brewfile${CLRNC}"
 if [ -f "$HOME/.local/share/chezmoi/Brewfile" ]; then
   echo "${CLRSUCCESS}Brewfile found in ~/.local/share/chezmoi/Brewfile!${CLRNC}"
+	echo "${CLRINFO}Installing software from Brewfile${CLRNC}"
+	brew bundle --file="$HOME/.local/share/chezmoi/Brewfile"
 else
   # if brewfile not found ask the user to continue
   echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile NOT found${CLRNC}"
@@ -63,6 +71,3 @@ else
     esac
   done
 fi
-
-echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
-exists brew && echo "${CLRSUCCESS}Homebrew is installed" || (echo "${CLRINFO}Homebrew is not installed" && echo "Installing Homebrew${CLRNC}" && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
