@@ -19,7 +19,7 @@ There are cli tools to programmatically get/set screen resolutions (e.g., [displ
 - Install [chezmoi](https://www.chezmoi.io), init and apply dotfiles:
 
 ```bash
-$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kalaschnik
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kalaschnik
 ```
 
 This will run a setup script in parallel (see [./run_setup](/run_setup)), which does the following things:

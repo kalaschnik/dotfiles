@@ -62,12 +62,20 @@ else
 fi
 
 ### BREWFILE
-echo "\n${CLRHEAD}=== Installing Software from Brewfile${CLRNC}"
 echo "\n${CLRHEAD}=== Checking Brewfile${CLRNC}"
 if [ -f "$HOME/.local/share/chezmoi/Brewfile" ]; then
   echo "${CLRSUCCESS}Brewfile found in ~/.local/share/chezmoi/Brewfile!${CLRNC}"
-	echo "${CLRINFO}Installing software from Brewfile${CLRNC}"
-	brew bundle --file="$HOME/.local/share/chezmoi/Brewfile"
+
+	echo "${CLRINFO}Would you like to install apps listed in Brewfile?${CLRNC}"
+  select yn in "Yes" "No"; do
+    case $yn in
+      Yes ) echo "${CLRSUCCESS}Installing apps from Brewfile${CLRNC}";
+						brew bundle --file="$HOME/.local/share/chezmoi/Brewfile"					
+						break;;
+      No ) echo "${CLRSUCCESS}Skipping Brewfile install.${CLRNC}"; break;;
+    esac
+  done
+
 else
   # if brewfile not found ask the user to continue
   echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile NOT found${CLRNC}"
