@@ -59,6 +59,12 @@ else
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	(echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> "$HOME/.zprofile"
 	eval "$(/usr/local/bin/brew shellenv)"
+
+	# This works to solve the Insecure Directories issue:
+	# compaudit | xargs chmod go-w
+	# But this is from the Homebrew site, though `-R` was needed:
+	# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+	chmod -R go-w "$(brew --prefix)/share"
 fi
 
 ### BREWFILE
