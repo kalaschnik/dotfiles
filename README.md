@@ -8,6 +8,8 @@
 xcode-select --install
 ```
 
+**After that go to Settings/General/Software Update and update Command Line Tools for XCode**
+
 ### Screen Resolution
 
 There are cli tools to programmatically get/set screen resolutions (e.g., [displaypacer](https://github.com/jakehilborn/displayplacer)), however, for my preferences this is overkill. Just set it via Settings/Displays.
@@ -22,6 +24,7 @@ $ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kalaschnik
 
 This will run a setup script in parallel (see [./run_setup](/run_setup)), which does the following things:
 
+- Checking if a Brewfile was found
 - Install [Homebrew](https://brew.sh)
 
 run_once:

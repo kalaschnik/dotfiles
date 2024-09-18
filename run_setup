@@ -51,7 +51,15 @@ echo They are need to run some CLI apps, you cannot really bypass this step
 
 ### HOMEBREW
 echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
-exists brew && echo "${CLRSUCCESS}Homebrew aleady installed" || (echo "${CLRINFO}Homebrew is not installed" && echo "Installing Homebrew${CLRNC}" && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+if exists brew; then
+	echo "${CLRSUCCESS}Homebrew already installed${CLRNC}"
+else
+	echo "${CLRINFO}Homebrew is not installed${CLRNC}"
+	echo "Installing Homebrew${CLRNC}"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	(echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> "$HOME/.zprofile"
+	eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 ### BREWFILE
 echo "\n${CLRHEAD}=== Installing Software from Brewfile${CLRNC}"
