@@ -61,6 +61,7 @@ else
 	eval "$(/usr/local/bin/brew shellenv)"
 
 	# This works to solve the Insecure Directories issue:
+  # which may come from https://formulae.brew.sh/formula/zsh-completions
 	# compaudit | xargs chmod go-w
 	# But this is from the Homebrew site, though `-R` was needed:
 	# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh

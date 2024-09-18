@@ -14,8 +14,6 @@ if type brew &>/dev/null; then
   zstyle ':completion:*' menu select
 fi
 
-export PATH="$N_PREFIX/bin:$PATH:"
-
 ###############################################################################
 # Aliases
 ###############################################################################
@@ -27,7 +25,7 @@ alias ll=eza
 # use old ls with lsa
 alias lsa='command ls -lAFh'
 alias R='R --no-save --no-restore-data'
-alias bbd='brew bundle dump --file=~/Nextcloud/projects/dotfiles/Brewfile --force --describe'
+alias bbd='brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe'
 alias rm=trash # using node’s global trash-cli
 alias trail='bat<<<${(F)path}'
 alias p='cd ~/Nextcloud/projects/'
@@ -45,6 +43,7 @@ function take() {
 }
 
 # add gi to query toptal gitignore api
+# todo make this an alfred response
 function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 ###############################################################################
@@ -66,8 +65,6 @@ export PS1="%~ $ "
 # Expose REMOVE_BG_API_KEY using 1password cli - prepend removebg witih op run --
 # instead of removebg example.jpg use op run -- removebg example.jpg
 export REMOVE_BG_API_KEY="op://Personal/Kaleido/API-removebg"
-
-export JIRA_AUTH_TYPE="bearer"
 
 # Allow interactive comments (#)
 setopt interactive_comments
