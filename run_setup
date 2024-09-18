@@ -10,7 +10,7 @@ source ./scripts/utils
 echo "\n${CLRHEAD}=== Checking Apple Developer Tools${CLRNC}"
 echo They are need to run some CLI apps, you cannot really bypass this step
 
-[ -d "/Library/Developer/CommandLineTools/" ] && echo "${CLRINFO}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}" && xcode-select --install
+# [ -d "/Library/Developer/CommandLineTools/" ] && echo "${CLRINFO}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}" && xcode-select --install
 
 
 
