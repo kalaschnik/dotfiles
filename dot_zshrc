@@ -19,11 +19,11 @@ export PATH="$N_PREFIX/bin:$PATH:"
 ###############################################################################
 # Aliases
 ###############################################################################
-# Use exa for ls
-alias exa='exa -aa --header --long --classify --git --group-directories-first --icons --accessed --modified --created --group'
-# forward ls to exa
-alias ls=exa
-alias ll=exa
+# Use eza for ls
+alias eza='eza -aa --header --long --classify --git --group-directories-first --icons --accessed --modified --created --group'
+# forward ls to eza
+alias ls=eza
+alias ll=eza
 # use old ls with lsa
 alias lsa='command ls -lAFh'
 alias R='R --no-save --no-restore-data'
