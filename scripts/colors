@@ -1,7 +1,0 @@
-
-#!/usr/bin/env zsh
-
-CLRNC='\033[0m' # No Color
-CLRHEAD='\033[1;36m'
-CLRSUCCESS='\033[0;32m'
-CLRINFO='\033[0;33m'

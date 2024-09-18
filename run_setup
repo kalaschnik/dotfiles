@@ -4,21 +4,53 @@ echo "\nRunning Setup script via $0"
 echo "ZSH_VERSION → $ZSH_VERSION"
 echo "Current Shell → $(ps $$ -ocomm=)\n"
 
-source ./scripts/colors
-source ./scripts/utils
+#######################################
+# Colors ##############################
+#######################################
+CLRNC='\033[0m' # No Color
+CLRHEAD='\033[1;36m'
+CLRSUCCESS='\033[0;32m'
+CLRINFO='\033[0;33m'
 
+#######################################
+# Utility Functions ###################
+#######################################
+# Prints a countdown to the terminal in seconds, e.g.,
+# sleep_countdown # defaults to 10 seconds
+# sleep_countdown 5 # 5 seconds
+# sleep_countdown 5 "Start setup in" # 5 seconds, with a custom message
+sleep_countdown() {
+  secs=${1:-10}
+  label=${2:-starting in}
+  while [ $secs -gt 0 ]; do
+    printf "\r$label $secs\033[0K"
+    sleep 1
+    : $((secs--))
+  done
+  printf "\n"
+}
+
+# check if a command exists, silently! (exists git && echo "git found" || echo "git not found")
+# command -v behaves like which, but more resilient (https://stackoverflow.com/q/592620/2258480)
+# $1 is the first parameter passed to the function exists git <- git = $1
+# redirect to /dev/null (black hole, non existent) to avoid printing to stdout
+# redirect standard error to first standard output (1 needs to be prepended by &, if redirectiong
+# is on the right side)
+function exists() {
+  command -v $1 >/dev/null 2>&1
+}
+
+#######################################
+# Script Start ########################
+#######################################
 echo "\n${CLRHEAD}=== Checking Apple Developer Tools${CLRNC}"
 echo They are need to run some CLI apps, you cannot really bypass this step
 
 [ -d "/Library/Developer/CommandLineTools/" ] && echo "${CLRINFO}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}"
 
+echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
+exists brew && echo "Homebrew is installed" || echo "Homebrew is not installed"
 
-
-
-
-
-
-
-# exists brew && echo "Homebrew is installed" || echo "Homebrew is not installed"
-
+echo "\n${CLRHEAD}=== Checking Brewfile${CLRNC}"
+[ -f "/Library/Developer/CommandLineTools/" ] && echo "${CLRINFO}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}"
 

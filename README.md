@@ -2,19 +2,25 @@
 
 ## Post install steps
 
-### Apple Developer Tools
+### Install Apple Developer Tools
+
+```
+xcode-select --install
+```
 
 ### Screen Resolution
 
 There are cli tools to programmatically get/set screen resolutions (e.g., [displaypacer](https://github.com/jakehilborn/displayplacer)), however, for my preferences this is overkill. Just set it via Settings/Displays.
 
-### Command Line Tools
+### Chezmoi Idempotent Install Script
 
-- Install [chezmoi](https://www.chezmoi.io) and apply dotfiles:
+- Install [chezmoi](https://www.chezmoi.io), init and apply dotfiles:
 
 ```bash
 $ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kalaschnik
 ```
+
+This will run a setup script in parallel (see [./run_setup](/run_setup)), which does the following things:
 
 - Install [Homebrew](https://brew.sh)
 
