@@ -1,2 +1,4 @@
+# Chezmoi will copy non-chezmoi files (files not dot* run* prefixes) from this repo to the home directoy
+# By listing those non-chezmoi files those files will NOT be copied to your home dir
 README.md
 Brewfile

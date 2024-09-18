@@ -48,25 +48,22 @@ echo They are need to run some CLI apps, you cannot really bypass this step
 
 [ -d "/Library/Developer/CommandLineTools/" ] && echo "${CLRSUCCESS}Developer Tools already installed${CLRNC}" || echo "${CLRINFO}Need to install Developer Tools, please re-run chezmoi after installation${CLRNC}"
 
-# flag if brewfile is found
-BREWFILE_FOUND=false
 
 echo "\n${CLRHEAD}=== Checking Brewfile${CLRNC}"
-[ -f "$HOME/.local/share/chezmoi/Brewfile" ] && (echo "${CLRINFO}Brewfile found in ~/.local/share/chezmoi/Brewfile!${CLRNC}" && BREWFILE_FOUND=true) || echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile not found${CLRNC}"
-
-# if brewfile not found ask the user to continue
-if [ "$BREWFILE_FOUND" = false ]; then
-	echo "${CLRINFO}Would you like to continue without Brewfile?${CLRNC}"
-	select yn in "Yes" "No"; do
-		case $yn in
-			Yes ) echo "${CLRSUCCESS}Continuing without Brewfile. I will manually install my stuff${CLRNC}"; break;;
-			No ) echo "${CLRSUCCESS}Exiting.${CLRNC} You can create a Brewfile on your old machine with: brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe"; exit;;
-		esac
-	done
+if [ -f "$HOME/.local/share/chezmoi/Brewfile" ]; then
+  echo "${CLRSUCCESS}Brewfile found in ~/.local/share/chezmoi/Brewfile!${CLRNC}"
+  BREWFILE_FOUND=true
+else
+	# if brewfile not found ask the user to continue
+  echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile not found${CLRNC}"
+		echo "${CLRINFO}Would you like to continue without Brewfile?${CLRNC}"
+		select yn in "Yes" "No"; do
+			case $yn in
+				Yes ) echo "${CLRSUCCESS}Continuing without Brewfile. I will manually install my stuff${CLRNC}"; break;;
+				No ) echo "${CLRSUCCESS}Exiting.${CLRNC} You can create a Brewfile on your old machine with: brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe"; exit;;
+			esac
+		done
 fi
 
 echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
 exists brew && echo "${CLRSUCCESS}Homebrew is installed" || (echo "${CLRINFO}Homebrew is not installed" && echo "Installing Homebrew${CLRNC}" && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-
-
-
