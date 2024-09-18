@@ -52,17 +52,16 @@ echo They are need to run some CLI apps, you cannot really bypass this step
 echo "\n${CLRHEAD}=== Checking Brewfile${CLRNC}"
 if [ -f "$HOME/.local/share/chezmoi/Brewfile" ]; then
   echo "${CLRSUCCESS}Brewfile found in ~/.local/share/chezmoi/Brewfile!${CLRNC}"
-  BREWFILE_FOUND=true
 else
-	# if brewfile not found ask the user to continue
-  echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile not found${CLRNC}"
-		echo "${CLRINFO}Would you like to continue without Brewfile?${CLRNC}"
-		select yn in "Yes" "No"; do
-			case $yn in
-				Yes ) echo "${CLRSUCCESS}Continuing without Brewfile. I will manually install my stuff${CLRNC}"; break;;
-				No ) echo "${CLRSUCCESS}Exiting.${CLRNC} You can create a Brewfile on your old machine with: brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe"; exit;;
-			esac
-		done
+  # if brewfile not found ask the user to continue
+  echo "${CLRINFO}Brewfile in ~/.local/share/chezmoi/Brewfile NOT found${CLRNC}"
+  echo "${CLRINFO}Would you like to continue without Brewfile?${CLRNC}"
+  select yn in "Yes" "No"; do
+    case $yn in
+      Yes ) echo "${CLRSUCCESS}Continuing without Brewfile. I will manually install my stuff${CLRNC}"; break;;
+      No ) echo "${CLRSUCCESS}Exiting.${CLRNC} You can create a Brewfile on your old machine with: brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe"; exit;;
+    esac
+  done
 fi
 
 echo "\n${CLRHEAD}=== Checking Homebrew${CLRNC}"
