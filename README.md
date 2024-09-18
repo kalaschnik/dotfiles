@@ -1,6 +1,14 @@
-# dotfiles
+# dotfiles via chezmoi
 
-## Post clean install steps:
+## Post install steps
+
+### Apple Developer Tools
+
+### Screen Resolution
+
+There are cli tools to programmatically get/set screen resolutions (e.g., [displaypacer](https://github.com/jakehilborn/displayplacer)), however, for my preferences this is overkill. Just set it via Settings/Displays.
+
+### Command Line Tools
 
 - Install [chezmoi](https://www.chezmoi.io) and apply dotfiles:
 
