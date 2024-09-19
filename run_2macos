@@ -1,0 +1,185 @@
+#######################################
+# Colors ##############################
+#######################################
+CLRNC='\033[0m' # No Color
+CLRHEAD='\033[1;36m'
+CLRSUCCESS='\033[0;32m'
+CLRINFO='\033[0;33m'
+
+echo "\n${CLRHEAD}=== macOS Defaults${CLRNC}"
+echo "\n${CLRHEAD}=== Dock Settings${CLRNC}"
+
+# Change macOS Dock icon size
+echo "${CLRINFO}\nYour Docksize is $(defaults read com.apple.dock tilesize). Do you want to change it to 48?${CLRNC}"
+select yn in "Yes" "No"; do
+  case $yn in
+    Yes ) echo "${CLRSUCCESS}Changing to 48${CLRNC}";
+					defaults write com.apple.dock "tilesize" -int "48" && killall Dock
+          break;;
+    No ) echo "${CLRSUCCESS}Leaving Docksize as is${CLRNC}"; break;;
+  esac
+done
+
+# Autohide
+echo "${CLRINFO}\nYour Dock is set to autohide $(defaults read com.apple.dock autohide) (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving autohide as is${CLRNC}"; break;;
+	esac
+done
+
+# Show recents
+echo "${CLRINFO}\nYour Dock is set to show recent applications $(defaults read com.apple.dock show-recents) (1 = true, 0 = false). Do you want to change it to false?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to false${CLRNC}";
+					defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving show-recents as is${CLRNC}"; break;;
+	esac
+done
+
+# Minimize animation effect
+echo "${CLRINFO}\nYour Dock is set to minimize animation effect $(defaults read com.apple.dock mineffect). Do you want to change it to scale?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to scale${CLRNC}";
+					defaults write com.apple.dock "mineffect" -string "scale" && killall Dock
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving mineffect as is${CLRNC}"; break;;
+	esac
+done
+
+echo "\n\n${CLRHEAD}=== Screenshot Settings${CLRNC}"
+
+# Set location
+echo "${CLRINFO}\nYour screenshots are saved to $(defaults read com.apple.screencapture location). Do you want to change it to ~/Downloads?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to ~/Downloads${CLRNC}";
+					defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving location as is${CLRNC}"; break;;
+	esac
+done
+
+
+echo "\n\n${CLRHEAD}=== Finder Settings${CLRNC}"
+
+# Show extensions
+echo "${CLRINFO}\nYour Finder is set to show file extensions $(defaults read NSGlobalDomain AppleShowAllExtensions) (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving AppleShowAllExtensions as is${CLRNC}"; break;;
+	esac
+done
+
+# Show hidden files
+echo "${CLRINFO}\nYour Finder is set to show hidden files $(defaults read com.apple.finder AppleShowAllFiles) (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write com.apple.finder "AppleShowAllFiles" -bool "true" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving AppleShowAllFiles as is${CLRNC}"; break;;
+	esac
+done
+
+# Path bar
+echo "${CLRINFO}\nYour Finder is set to show path bar $(defaults read com.apple.finder ShowPathbar) (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving ShowPathbar as is${CLRNC}"; break;;
+	esac
+done
+
+# Default view style
+echo "${CLRINFO}\nYour Finder is set to default view style $(defaults read com.apple.finder FXPreferredViewStyle). Do you want to change it to list view?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to list view${CLRNC}";
+					defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving FXPreferredViewStyle as is${CLRNC}"; break;;
+	esac
+done
+
+# Keep folders on top
+echo "${CLRINFO}\nYour Finder is set to keep folders on top $(defaults read com.apple.finder _FXSortFoldersFirst) (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving _FXSortFoldersFirst as is${CLRNC}"; break;;
+	esac
+done
+
+# Changing file extension warning
+echo "${CLRINFO}\nYour Finder is set to show warning when changing file extension $(defaults read com.apple.finder "FXEnableExtensionChangeWarning") (1 = true, 0 = false). Do you want to change it to false?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to false${CLRNC}";
+					defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving FXEnableExtensionChangeWarning as is${CLRNC}"; break;;
+	esac
+done
+
+
+echo "\n\n${CLRHEAD}=== Desktop Settings${CLRNC}"
+
+# External disks
+echo "${CLRINFO}\nYour Desktop is set to show external disks $(defaults read com.apple.finder ShowExternalHardDrivesOnDesktop) (1 = true, 0 = false). Do you want to change it to false?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to false${CLRNC}";
+					defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "false" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving ShowExternalHardDrivesOnDesktop as is${CLRNC}"; break;;
+	esac
+done
+
+# Removable media
+echo "${CLRINFO}\nYour Desktop is set to show removable media $(defaults read com.apple.finder ShowRemovableMediaOnDesktop) (1 = true, 0 = false). Do you want to change it to false?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to false${CLRNC}";
+					defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "false" && killall Finder
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving ShowRemovableMediaOnDesktop as is${CLRNC}"; break;;
+	esac
+done
+
+echo "\n\n${CLRHEAD}=== TextEdit Settings${CLRNC}"
+# Set default document format
+echo "${CLRINFO}\nYour TextEdit is set to default document format $(defaults read com.apple.TextEdit RichText) (1 = RichText, 0 = Plain Text). Do you want to change it to plain text?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to plain text${CLRNC}";
+					defaults write com.apple.TextEdit "RichText" -bool "false" && killall TextEdit
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving RichText as is${CLRNC}"; break;;
+	esac
+done
+
+echo "\n\n${CLRHEAD}=== Time Machine Settings${CLRNC}"
+# Disable local backups
+echo "${CLRINFO}\nPrevent Time Machine from prompting to use newly connected storage as backup volumes. Right now it is set to $(defaults read com.apple.TimeMachine "DoNotOfferNewDisksForBackup") (1 = true, 0 = false). Do you want to change it to true?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing to true${CLRNC}";
+					defaults write com.apple.TimeMachine "DoNotOfferNewDisksForBackup" -bool "true"
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving DoNotOfferNewDisksForBackup as is${CLRNC}"; break;;
+	esac
+done
