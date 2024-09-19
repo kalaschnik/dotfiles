@@ -1,6 +1,6 @@
 # dotfiles via chezmoi
 
-## Post install steps
+## Post Install Steps (macOS)
 
 ### Install Apple Developer Tools
 
@@ -8,7 +8,7 @@
 xcode-select --install
 ```
 
-**After that go to Settings/General/Software Update and update Command Line Tools for XCode**
+**⚠️ Thereafter, go to Settings/General/Software Update and update Command Line Tools for XCode!**
 
 ### Screen Resolution
 
@@ -16,36 +16,27 @@ There are cli tools to programmatically get/set screen resolutions (e.g., [displ
 
 ### Chezmoi Idempotent Install Script
 
-- Install [chezmoi](https://www.chezmoi.io), init and apply dotfiles:
+Install [chezmoi](https://www.chezmoi.io), init and apply dotfiles:
 
 ```bash
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kalaschnik
 ```
 
-This will run a setup script in parallel (see [./run_setup](/run_setup)), which does the following things:
+This will apply the dotfiles via chezmoi and will run 2 setup scripts in parallel
 
-- Checking if a Brewfile was found
-- Install [Homebrew](https://brew.sh)
+1. [`run_once_1setup`](run_once_1setup)
+   1. Installs [Homebrew](https://brew.sh), if not already installed
+   2. Install app from the brewfile [./Brewfile](/Brewfile)
+2. [`run_once_2macos`](run_once_2macos)
+   1. Asks and sets computer name, host name, and local host name
+   2. Asks to set some defaults: https://macos-defaults.com/
 
-run_once:
+### Manual Steps
 
-- `compaudit | xargs chmod g-w` to fix zsh compinit: insecure directories, run compaudit for list.
-  There are insecure directories:
-  /usr/local/share
+Note: After chezmoi’s inital installation, you can access `chezmoi` via cli, since it was installed via homebrew. Running `chezmoi apply` will reset the dotfiles to the repo's state.
 
-- Execute this to make git full case senstive:
+#### Manual Steps
 
-```
-git config --unset-all core.ignorecase && git config --system core.ignorecase false
-```
-
-## `jira-cli`
-
-1. Add new password to keychain (see [here](https://github.com/ankitpokhrel/jira-cli/discussions/356)) and use your Personal Access Token as password
-2. If this feature is still not resolved (https://github.com/ankitpokhrel/jira-cli/issues/651), run this once to get shell completion for `jira-cli`:
-
-```
-jira completion zsh > /usr/local/share/zsh/site-functions/_jira
-```
-
-3. run `jira init`
+- [ ] Lunch Applications and sign in and sync settings (e.g., VS Code)
+- [ ] Create/Copy over SSH Keys
+- [ ] Import Alfred settings
