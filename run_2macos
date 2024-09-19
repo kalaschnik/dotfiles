@@ -6,6 +6,48 @@ CLRHEAD='\033[1;36m'
 CLRSUCCESS='\033[0;32m'
 CLRINFO='\033[0;33m'
 
+echo "\n${CLRHEAD}=== macOS Names${CLRNC}"
+
+# Ask for computer name to set
+echo "${CLRINFO}\nYour computer name is $(scutil --get ComputerName). Do you want to change it?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing computer name${CLRNC}";
+					echo "Enter new computer name: "
+					read newname
+					sudo scutil --set ComputerName $newname
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving computer name as is${CLRNC}"; break;;
+	esac
+done
+
+# Ask for host name to set
+echo "${CLRINFO}\nYour host name is $(scutil --get HostName). Do you want to change it?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing host name${CLRNC}";
+					echo "Enter new host name: "
+					read newname
+					sudo scutil --set HostName $newname
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving host name as is${CLRNC}"; break;;
+	esac
+done
+
+# Ask for local host name to set
+echo "${CLRINFO}\nYour local host name is $(scutil --get LocalHostName). Do you want to change it?${CLRNC}"
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) echo "${CLRSUCCESS}Changing local host name${CLRNC}";
+					echo "Enter new local host name: "
+					read newname
+					sudo scutil --set LocalHostName $newname
+					break;;
+		No ) echo "${CLRSUCCESS}Leaving local host name as is${CLRNC}"; break;;
+	esac
+done
+
+
 echo "\n${CLRHEAD}=== macOS Defaults${CLRNC}"
 echo "\n${CLRHEAD}=== Dock Settings${CLRNC}"
 
