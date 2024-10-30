@@ -28,7 +28,7 @@ alias R='R --no-save --no-restore-data'
 alias bbd='brew bundle dump --file=~/.local/share/chezmoi/Brewfile --force --describe'
 alias rm=trash # using node’s global trash-cli
 alias trail='bat<<<${(F)path}'
-alias p='cd ~/Nextcloud/projects/'
+alias p='cd ~/projects/'
 alias bun-vite="take ~/Downloads/bun-vite-$(date -u '+%Y-%m-%d-%H-%M') && bun create vite . --template react-swc-ts && echo -e 'Run\nbun run dev\nin VS Code’s terminal' > delete-me.txt && bun install && code . delete-me.txt"
 alias ghcs='gh copilot suggest'
 alias ghce='gh copilot explain'
