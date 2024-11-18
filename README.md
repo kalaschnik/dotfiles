@@ -1,6 +1,12 @@
 # dotfiles via chezmoi
 
-## Post Install Steps (macOS)
+# Pre-Install Steps
+
+## Backup
+
+- Thunder Client Settings
+
+## Post-Install Steps (macOS)
 
 ### Install Apple Developer Tools
 
