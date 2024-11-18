@@ -1,10 +1,11 @@
 # dotfiles via chezmoi
 
-# Pre-Install Steps
+## Pre-Install Steps
 
-## Backup
+### Backup
 
 - Thunder Client Settings
+  - `rsync -avh --progress ~/Library/Application\ Support/Code/User/globalStorage/rangav.vscode-thunder-client ~/Downloads/`
 
 ## Post-Install Steps (macOS)
 
