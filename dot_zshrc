@@ -66,6 +66,10 @@ export PS1="%~ $ "
 # instead of removebg example.jpg use op run -- removebg example.jpg
 export REMOVE_BG_API_KEY="op://Personal/Kaleido/API-removebg"
 
+# Makes sure that node gets installed in the hombrew directory
+export N_PREFIX="/opt/homebrew"
+
+
 # Allow interactive comments (#)
 setopt interactive_comments
 

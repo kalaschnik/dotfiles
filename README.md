@@ -6,6 +6,7 @@
 
 - Thunder Client Settings
   - `rsync -avh --progress ~/Library/Application\ Support/Code/User/globalStorage/rangav.vscode-thunder-client ~/Downloads/`
+- SOPS key at `$HOME/Library/Application\ Support/sops/age/keys.txt`
 
 ## Post-Install Steps (macOS)
 
